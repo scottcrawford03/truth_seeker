@@ -1,0 +1,7 @@
+<% @posts['data'].each do |post| %>
+  <% unless post['location'] == nil %>
+    <%= post['location']['latitude'] %>
+    <%= post['location']['longitude'] %>
+  <% end %>
+    <%= image_tag(post['images']['standard_resolution']['url'], width: '20%', height: '20%') %>
+<% end %>
