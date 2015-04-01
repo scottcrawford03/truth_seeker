@@ -1,3 +1,6 @@
+<p>
+  <%= link_to("twitter stuff", twitter_path) %>
+</p>
 <% @posts['data'].each do |post| %>
   <% unless post['location'] == nil %>
     <%= post['location']['latitude'] %>

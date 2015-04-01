@@ -1,0 +1,16 @@
+<% @elvis.each do |tweet| %>
+  <p>
+    <% unless tweet.geo.nil? %>
+      <%= tweet.geo.lat %>
+      <%= tweet.geo.long %>
+    <% end %>
+    <%= tweet.text %>
+    <%= tweet.user.location %>
+  </p>
+<% end %>
+
+<!-- <%= @elvis.first.user.location %> -->
+
+<p>
+  <%= link_to("instagram stuff", root_url) %>
+</p>
