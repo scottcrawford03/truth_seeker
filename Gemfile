@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faraday'
 gem 'figaro'
 gem 'twitter'
+gem 'tweetstream'
 
 group :development, :test do
   gem 'byebug'
