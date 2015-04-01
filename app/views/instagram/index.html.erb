@@ -6,10 +6,11 @@
 
 <% @all_posts.each do |page| %>
   <% page['data'].each do |post| %>
+    <%= post['caption']['text'] unless post['caption'].nil? %><br>
     <% unless post['location'] == nil %>
       <%= post['location']['latitude'] %>
-      <%= post['location']['longitude'] %>
-      <%= image_tag(post['images']['standard_resolution']['url'], width: '20%', height: '20%') %>
+      <%= post['location']['longitude'] %><br>
+      <%= image_tag(post['images']['standard_resolution']['url'], width: '20%', height: '20%') %><br><hr>
     <% end %>
   <% end %>
 <% end %>
