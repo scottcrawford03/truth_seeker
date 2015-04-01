@@ -5,8 +5,12 @@
 </p>
 
 <% @all_posts.each do |page| %>
+  <%= page['data'].first %>
   <% page['data'].each do |post| %>
-    <%= post['caption']['text'] unless post['caption'].nil? %><br>
+    <% unless post['caption'].nil? %>
+      <%= Time.at(post['caption']['created_time'].to_i).to_datetime %><br>
+      <%= post['caption']['text'] %>
+    <% end %>
     <% unless post['location'] == nil %>
       <%= post['location']['latitude'] %>
       <%= post['location']['longitude'] %><br>

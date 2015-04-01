@@ -1,17 +1,18 @@
 <h1><%= @elvis.count %> Tweets </h1>
 <% @elvis.each do |tweet| %>
-  <p>
-    <% unless tweet.geo.nil? %>
-      Lat Long: <%= tweet.geo.lat %>
-      <%= tweet.geo.long %>
-    <% end %>
-    <% if tweet.media? %>
-      <%= image_tag(tweet.media.first.media_url) %>
-    <% end %>
-    <p>Text: <%= tweet.text %></p>
-    Location: <%= tweet.user.location %>
-  </p>
-  <hr>
+  <% unless tweet.geo.nil? %>
+    Time: <%= tweet.created_at %>
+    <p>
+        Lat Long: <%= tweet.geo.lat %>
+        <%= tweet.geo.long %>
+      <% if tweet.media? %>
+        <%= image_tag(tweet.media.first.media_url) %>
+      <% end %>
+      <p>Text: <%= tweet.text %></p>
+      Location: <%= tweet.user.location %>
+    </p>
+    <hr>
+  <% end %>
 <% end %>
 <p>
   <%= link_to("instagram stuff", root_url) %>
