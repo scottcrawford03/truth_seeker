@@ -21,7 +21,8 @@ class TwitterService
     twitter_client.search(tag)
   end
 
-  def track_tweets(tag1,tag2)
+  def track_tag(tag1,tag2)
+    require 'pry' ; binding.pry
     TweetStream::Client.new.track(tag1,tag2) do |status|
       status.text
     end
