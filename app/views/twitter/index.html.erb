@@ -1,12 +1,13 @@
 <% @elvis.each do |tweet| %>
   <p>
     <% unless tweet.geo.nil? %>
-      <%= tweet.geo.lat %>
+      Lat Long: <%= tweet.geo.lat %>
       <%= tweet.geo.long %>
     <% end %>
-    <%= tweet.text %>
-    <%= tweet.user.location %>
+    <p>Text: <%= tweet.text %></p>
+    Location: <%= tweet.user.location %>
   </p>
+  <hr>
 <% end %>
 
 <p>
