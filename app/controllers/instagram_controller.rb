@@ -1,5 +1,5 @@
 class InstagramController < ApplicationController
   def index
-    @all_posts = InstagramService.new.find_all_tags('elvissighting')
+    @all_elvis = CreateInstagramPost.new.find_all_posts
   end
 end

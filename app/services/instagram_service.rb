@@ -15,12 +15,12 @@ class InstagramService
     parse(conn.get)
   end
 
-  def find_all_tags(tag)
+  def find_all_by_tag(tag)
     data = find_by_tag(tag)
     next_url = data['pagination']['next_url']
     until next_url.nil?
       response = find_next_tags(next_url)
-      all_tags << response
+      @all_tags += response['data']
       next_url = response['pagination']['next_url']
     end
     all_tags
