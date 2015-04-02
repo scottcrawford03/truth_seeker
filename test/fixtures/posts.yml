@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: MyString
+  lat_lag: MyString
+  image: MyString
+  text: MyString
+  posted_at: 2015-04-01 15:50:13
+  category_id: 
+
+two:
+  provider: MyString
+  lat_lag: MyString
+  image: MyString
+  text: MyString
+  posted_at: 2015-04-01 15:50:13
+  category_id: 
