@@ -2,16 +2,18 @@
 
 one:
   provider: MyString
-  lat_lag: MyString
+  lat: 3429843
+  long: 1238943
   image: MyString
   text: MyString
   posted_at: 2015-04-01 15:50:13
-  category_id: 
+  category_id:
 
 two:
   provider: MyString
-  lat_lag: MyString
+  lat: 12392
+  long: 93283
   image: MyString
   text: MyString
   posted_at: 2015-04-01 15:50:13
-  category_id: 
+  category_id:
