@@ -1,7 +1,7 @@
 class CreateTwitterPost
   attr_reader :service, :posts
 
-  def initialize(service=TwitterService.new)
+  def initialize(service = TwitterService.new)
     @service = service
   end
 
@@ -19,7 +19,7 @@ class CreateTwitterPost
     posts.each do |tweet|
       unless tweet.geo.nil?
         image = tweet.media.first.media_url if tweet.media?
-        Post.where(uuid: tweet.id, provider: 'twitter').first_or_create(
+        Post.where(uuid: tweet.id, provider: "twitter").first_or_create(
           lat: tweet.geo.lat,
           long: tweet.geo.long,
           posted_at: tweet.created_at,
