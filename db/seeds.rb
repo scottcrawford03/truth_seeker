@@ -43,7 +43,7 @@ class Seed
 
   def generate_categories
     category_names.each do |name|
-      category = Category.create(name: name)
+      Category.create(name: name)
     end
   end
 
