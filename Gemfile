@@ -24,4 +24,5 @@ group :development, :test do
   gem 'better_errors'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'simplecov', :require => false
 end
