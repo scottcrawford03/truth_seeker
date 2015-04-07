@@ -16,7 +16,7 @@ class FakeRetriever
         next_url: url
       },
       data: [
-        {id: next_id, tag: "my tag"}
+        { id: next_id, tag: "my tag" }
       ]
     }.to_json)
   end
@@ -45,7 +45,7 @@ class TestInstagramService < ActiveSupport::TestCase
       find_called = true
       assert_equal "tag", tag
 
-      assert_equal [{"id" => 1, "tag" => "my tag"}], post_batch
+      assert_equal [{ "id" => 1, "tag" => "my tag" }], post_batch
       []
     end
     assert find_called
@@ -61,11 +61,11 @@ class TestInstagramService < ActiveSupport::TestCase
       find_called = true
       assert_equal "tag", tag
 
-      assert_equal [{"id" => 1, "tag" => "my tag"}], post_batch
+      assert_equal [{ "id" => 1, "tag" => "my tag" }], post_batch
       []
     end
     assert find_called
 
-    assert all_posts, [{"id" => 1, "tag" => "my tag"}]
+    assert all_posts, [{ "id" => 1, "tag" => "my tag" }]
   end
 end
