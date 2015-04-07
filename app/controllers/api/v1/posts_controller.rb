@@ -4,6 +4,6 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def show
-    render json: Post.where(category_id: params['id'])
+    render json: Post.where(category_id: params["id"])
   end
 end
