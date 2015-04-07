@@ -10,11 +10,11 @@ class Seed
 
   def tag_data
     { 1 => ["elvissighting",
-             "elvisisalive",
-             "elvislives",
-             "elvispresleylives",
-             "elvisalive",
-             "foundelvis"],
+            "elvisisalive",
+            "elvislives",
+            "elvispresleylives",
+            "elvisalive",
+            "foundelvis"],
       2 => ["bigfootsighting",
             "bigfootisreal",
             "bigfootfound",
