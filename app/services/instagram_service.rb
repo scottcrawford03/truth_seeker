@@ -38,8 +38,8 @@ class InstagramService
     def get(url, tag)
       if url == ""
         uri = URI.parse(INITIAL_URL % { tag_name: tag })
-        connector.new(url: "%s://%s" % [uri.scheme, uri.host])
-          .get(uri.path, http_args)
+        connector.new(url: "%s://%s" % [uri.scheme, uri.host]).
+          get(uri.path, http_args)
       else
         connector.new(url: url).get
       end

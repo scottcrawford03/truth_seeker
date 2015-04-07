@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class FakeRetriever
   attr_accessor :next_id
@@ -32,7 +32,7 @@ class TestInstagramService < ActiveSupport::TestCase
       []
     end
 
-    assert_equal fake.called_urls, ['', "https://nope.nope.com"]
+    assert_equal fake.called_urls, ["", "https://nope.nope.com"]
   end
 
   test "find posts in batches yields batches of posts" do
