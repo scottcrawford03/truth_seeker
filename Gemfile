@@ -14,6 +14,8 @@ gem 'faraday'
 gem 'figaro'
 gem 'twitter'
 gem 'tweetstream'
+gem 'responders'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'byebug'

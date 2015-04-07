@@ -4,7 +4,7 @@
     Time: <%= tweet.created_at %>
     <p>
         Lat Long: <%= tweet.geo.lat %>
-        <%= tweet.geo.long %>
+                  <%= tweet.geo.long %>
       <% if tweet.media? %>
         <%= image_tag(tweet.media.first.media_url) %>
       <% end %>
