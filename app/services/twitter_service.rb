@@ -17,8 +17,9 @@ class TwitterService
                       end
   end
 
-  def find_tag(tag)
-    twitter_client.search(tag)
+  def find_tag(tag, &block)
+    response = twitter_client.search("##{tag} -rt")
+    block.call(response, tag)
   end
 
   def track_tag(tag1,tag2)
