@@ -70,16 +70,31 @@ class TestInstagramService < ActiveSupport::TestCase
   end
 
   class TestInstagramService::Retriever < ActiveSupport::TestCase
-    test "it constructs the correct URL" do
+    INITIAL_URL = "https://api.instagram.com/v1/tags/%<tag_name>s/media/recent"
+    DEFAULT_HTTP_ARGS = { access_token: ENV.fetch("instagram_access"),
+                          count: 33
+                          }
+    test "it constructs the correct URL when url is empty" do
       VCR.use_cassette("fetch_next_instagram_url") do
-        INITIAL_URL = "https://api.instagram.com/v1/tags/%<tag_name>s/media/recent"
-        DEFAULT_HTTP_ARGS = { access_token: ENV.fetch("instagram_access"), count: 33 }
         service = InstagramService.new.http_retriever
 
         tag = "tag"
         url = ""
       result = JSON.parse(service.get(url, tag).body)
-      assert_equal "https://api.instagram.com/v1/tags/tag/media/recent?access_token=#{ENV.fetch("instagram_access")}&count=33&max_tag_id=958737947548120985", result['pagination']['next_url']
+      assert_equal "https://api.instagram.com/v1/tags/tag/media/recent?access_token=#{ENV.fetch("instagram_access")}&count=33&max_tag_id=958737947548120985",
+        result['pagination']['next_url']
+      end
+    end
+
+    test "it contructs the correct URL when url is given" do
+      VCR.use_cassette("fetch_next_instagram_url_with_url_given") do
+        service = InstagramService.new.http_retriever
+
+        tag = "tag"
+        url = "https://api.instagram.com/v1/tags/tag/media/recent?access_token=#{ENV.fetch("instagram_access")}&count=33&max_tag_id=958737947548120985"
+        result = JSON.parse(service.get(url, tag).body)
+        assert_equal "https://api.instagram.com/v1/tags/tag/media/recent?access_token=#{ENV.fetch("instagram_access")}&count=33&max_tag_id=958736097706839061",
+          result['pagination']['next_url']
       end
     end
   end
