@@ -4,22 +4,12 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
   test '#index' do
     get :index, format: :json
 
-    items      = JSON.parse(response.body)
-    first_item = items.first
+    categories = JSON.parse(response.body)["categories"]
+    first_category = categories.first
 
     assert_response :success
-    assert_equal 'Cat',            first_item['name']
-    assert_equal 'This is a cat.', first_item['description']
-  end
-
-  test "shows post data using VCR" do
-    skip
-    VCR.use_cassette("posts") do
-      post :create, twitter_handle: "j3"
-    end
-
-    assert_response :success
-    assert_not_nil assigns(:tweets)
-    assert_select "li.tweet"
+    assert_equal "Elvis",          first_category['name']
+    assert_equal "Evlis is alive!", first_category['description']
+    assert_equal ["elvislives"], first_category['tags']["hashtags"]
   end
 end
