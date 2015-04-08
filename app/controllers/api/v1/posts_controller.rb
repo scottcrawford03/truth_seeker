@@ -1,9 +1,9 @@
 class Api::V1::PostsController < ApplicationController
   def index
-    render json: Post.all
-  end
-
-  def show
-    render json: Post.where(category_id: params["id"])
+    if params[:category_id]
+      render json: Post.where(category_id: params[:category_id])
+    else
+      render json: Post.all
+    end
   end
 end
