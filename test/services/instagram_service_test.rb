@@ -82,7 +82,7 @@ class TestInstagramService < ActiveSupport::TestCase
         url = ""
         result = JSON.parse(service.get(url, tag).body)
         assert_equal "https://api.instagram.com/v1/tags/tag/media/recent?" +
-          "access_token=#{ENV.fetch('instagram_access')}" +
+          "access_token=#{ENV.fetch('instagram_access')}"                  +
           "&count=33&max_tag_id=958737947548120985",
           result["pagination"]["next_url"]
       end
@@ -93,12 +93,12 @@ class TestInstagramService < ActiveSupport::TestCase
         service = InstagramService.new.http_retriever
 
         tag = "tag"
-        url = "https://api.instagram.com/v1/tags/tag/media/recent?" +
-          "access_token=#{ENV.fetch('instagram_access')}" +
+        url = "https://api.instagram.com/v1/tags/tag/media/recent?"        +
+          "access_token=#{ENV.fetch('instagram_access')}"                  +
           "&count=33&max_tag_id=958737947548120985"
         result = JSON.parse(service.get(url, tag).body)
         assert_equal "https://api.instagram.com/v1/tags/tag/media/recent?" +
-          "access_token=#{ENV.fetch('instagram_access')}" +
+          "access_token=#{ENV.fetch('instagram_access')}"                  +
           "&count=33&max_tag_id=958736097706839061",
           result["pagination"]["next_url"]
       end
