@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class Api::V1::CategoriesControllerTest < ActionController::TestCase
-  test '#index' do
+  test "#index" do
     get :index, format: :json
 
     categories = JSON.parse(response.body)["categories"]
