@@ -23,8 +23,8 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
     refute first_post["uuid"]
   end
 
-  test "shows posts params" do
-    get :index, category_id: '980190962', format: :json
+  test "shows posts with category id in params" do
+    get :index, category_id: "980190962", format: :json
     posts = JSON.parse(response.body)["posts"]
     first_post = posts.first
     post = Post.find(posts.first["id"])
