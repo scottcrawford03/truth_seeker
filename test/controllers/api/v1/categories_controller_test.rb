@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApplicationControllerTest < ActionController::TestCase
+class Api::V1::CategoriesControllerTest < ActionController::TestCase
   test '#index' do
     get :index, format: :json
 
@@ -13,7 +13,7 @@ class ApplicationControllerTest < ActionController::TestCase
   end
 
   test "shows post data using VCR" do
-  skip
+    skip
     VCR.use_cassette("posts") do
       post :create, twitter_handle: "j3"
     end
