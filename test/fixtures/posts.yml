@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  provider: MyString
+  provider: "Twitter"
   lat: 3429843
   long: 1238943
   image: MyString
-  text: MyString
+  text: "I knew he was alive!"
   posted_at: 2015-04-01 15:50:13
-  category_id:
+  category_id: 980190962
 
 two:
-  provider: MyString
+  provider: "Instagram"
   lat: 12392
   long: 93283
   image: MyString
-  text: MyString
+  text: "I saw the king!"
   posted_at: 2015-04-01 15:50:13
-  category_id:
+  category_id: 980190962
