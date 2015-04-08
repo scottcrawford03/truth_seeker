@@ -2,6 +2,6 @@ class CategorySerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :tags
 
   def tags
-    { hashtags: object.tags.map {|tag| tag.hashtag }}
+    { hashtags: object.tags.map(&:hashtag) }
   end
 end
