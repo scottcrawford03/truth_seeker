@@ -18,3 +18,6 @@
 # Ignore simplecov
 /coverage
 /coverage/*
+
+# Ignore VCR files
+/test/fixtures/vcr_cassettes/*

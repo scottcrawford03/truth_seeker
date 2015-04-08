@@ -80,11 +80,10 @@ class TestInstagramService < ActiveSupport::TestCase
 
         tag = "tag"
         url = ""
-        result = JSON.parse(service.get(url, tag).body)
-        assert_equal "https://api.instagram.com/v1/tags/tag/media/recent?" +
-          "access_token=#{ENV.fetch('instagram_access')}" +
-          "&count=33&max_tag_id=958737947548120985",
-          result["pagination"]["next_url"]
+        response = JSON.parse(service.get(url, tag).body)
+        next_url = URI.parse(response['pagination']['next_url'])
+        url = next_url.scheme + "://" + next_url.host + next_url.path
+        assert_equal "https://api.instagram.com/v1/tags/tag/media/recent", url
       end
     end
 
@@ -96,12 +95,11 @@ class TestInstagramService < ActiveSupport::TestCase
         url = "https://api.instagram.com/v1/tags/tag/media/recent?" +
           "access_token=#{ENV.fetch('instagram_access')}" +
           "&count=33&max_tag_id=958737947548120985"
-        result = JSON.parse(service.get(url, tag).body)
-        assert_equal "https://api.instagram.com/v1/tags/tag/media/recent?" +
-          "access_token=#{ENV.fetch('instagram_access')}" +
-          "&count=33&max_tag_id=958736097706839061",
-          result["pagination"]["next_url"]
-      end
+          response = JSON.parse(service.get(url, tag).body)
+          next_url = URI.parse(response['pagination']['next_url'])
+          url = next_url.scheme + "://" + next_url.host + next_url.path
+          assert_equal "https://api.instagram.com/v1/tags/tag/media/recent", url
+        end
     end
   end
 end
