@@ -8,8 +8,8 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     first_category = categories.first
 
     assert_response :success
-    assert_equal "Elvis",          first_category['name']
-    assert_equal "Evlis is alive!", first_category['description']
-    assert_equal ["elvislives"], first_category['tags']["hashtags"]
+    assert_equal "Elvis",          first_category["name"]
+    assert_equal "Evlis is alive!", first_category["description"]
+    assert_equal ["elvislives"], first_category["tags"]["hashtags"]
   end
 end
