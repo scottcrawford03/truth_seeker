@@ -77,11 +77,10 @@ class TestInstagramService < ActiveSupport::TestCase
     test "it constructs the correct URL when url is empty" do
       VCR.use_cassette("fetch_next_instagram_url") do
         service = InstagramService.new.http_retriever
-
         tag = "tag"
         url = ""
         response = JSON.parse(service.get(url, tag).body)
-        next_url = URI.parse(response['pagination']['next_url'])
+        next_url = URI.parse(response["pagination"]["next_url"])
         url = next_url.scheme + "://" + next_url.host + next_url.path
         assert_equal "https://api.instagram.com/v1/tags/tag/media/recent", url
       end
@@ -90,13 +89,12 @@ class TestInstagramService < ActiveSupport::TestCase
     test "it contructs the correct URL when url is given" do
       VCR.use_cassette("fetch_next_instagram_url_with_url_given") do
         service = InstagramService.new.http_retriever
-
         tag = "tag"
         url = "https://api.instagram.com/v1/tags/tag/media/recent?" +
           "access_token=#{ENV.fetch('instagram_access')}" +
           "&count=33&max_tag_id=958737947548120985"
           response = JSON.parse(service.get(url, tag).body)
-          next_url = URI.parse(response['pagination']['next_url'])
+          next_url = URI.parse(response["pagination"]["next_url"])
           url = next_url.scheme + "://" + next_url.host + next_url.path
           assert_equal "https://api.instagram.com/v1/tags/tag/media/recent", url
         end
