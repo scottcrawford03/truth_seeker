@@ -17,3 +17,4 @@
 
 # Ignore simplecov
 /coverage
+/coverage/*
