@@ -10,7 +10,7 @@ class CreateInstagramPost
   end
 
   def find_and_save_all_posts
-    Tag.all.reverse.flat_map do |tag|
+    Tag.all.flat_map do |tag|
       service.find_posts_in_batches(tag.hashtag,
                                     &method(:save_posts_to_database)
                                     )
