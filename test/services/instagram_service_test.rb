@@ -68,4 +68,38 @@ class TestInstagramService < ActiveSupport::TestCase
 
     assert all_posts, [{ "id" => 1, "tag" => "my tag" }]
   end
+
+  class TestInstagramService::Retriever < ActiveSupport::TestCase
+    INITIAL_URL = "https://api.instagram.com/v1/tags/%<tag_name>s/media/recent"
+    DEFAULT_HTTP_ARGS = { access_token: ENV.fetch("instagram_access"),
+                          count: 33
+                          }
+    test "it constructs the correct URL when url is empty" do
+      VCR.use_cassette("fetch_next_instagram_url") do
+        service = InstagramService.new.http_retriever
+
+        tag = "tag"
+        url = ""
+        response = JSON.parse(service.get(url, tag).body)
+        next_url = URI.parse(response['pagination']['next_url'])
+        url = next_url.scheme + "://" + next_url.host + next_url.path
+        assert_equal "https://api.instagram.com/v1/tags/tag/media/recent", url
+      end
+    end
+
+    test "it contructs the correct URL when url is given" do
+      VCR.use_cassette("fetch_next_instagram_url_with_url_given") do
+        service = InstagramService.new.http_retriever
+
+        tag = "tag"
+        url = "https://api.instagram.com/v1/tags/tag/media/recent?" +
+          "access_token=#{ENV.fetch('instagram_access')}" +
+          "&count=33&max_tag_id=958737947548120985"
+          response = JSON.parse(service.get(url, tag).body)
+          next_url = URI.parse(response['pagination']['next_url'])
+          url = next_url.scheme + "://" + next_url.host + next_url.path
+          assert_equal "https://api.instagram.com/v1/tags/tag/media/recent", url
+        end
+    end
+  end
 end
