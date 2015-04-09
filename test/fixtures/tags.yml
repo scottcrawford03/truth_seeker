@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  hashtag: MyString
-  category_id: 
+  hashtag: "elvislives"
+  category_id: 980190962
 
 two:
-  hashtag: MyString
-  category_id: 
+  hashtag: "bigfootsighting"
+  category_id: 2

@@ -30,6 +30,7 @@ class InstagramService
 
   class Retriever
     attr_reader :connector, :http_args
+
     def initialize(connector = Faraday, http_args = DEFAULT_HTTP_ARGS)
       @connector = connector
       @http_args = http_args
