@@ -5,13 +5,10 @@ class CreateTwitterPost
     @service = service
   end
 
-  def find_all_posts
-    []
-  end
-
   def find_and_save_all_posts
     Tag.all.flat_map do |tag|
       service.find_tag(tag.hashtag, &method(:save_tweets_to_database))
+      sleep(300)
     end
   end
 
