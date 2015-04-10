@@ -5,10 +5,6 @@ class CreateInstagramPost
     @service = service
   end
 
-  def find_all_posts
-    []
-  end
-
   def find_and_save_all_posts
     Tag.all.flat_map do |tag|
       service.find_posts_in_batches(tag.hashtag,
