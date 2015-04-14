@@ -15,6 +15,7 @@ gem 'twitter'
 gem 'tweetstream'
 gem 'responders'
 gem 'active_model_serializers'
+gem 'whenever'
 
 group :development, :test do
   gem 'byebug'
