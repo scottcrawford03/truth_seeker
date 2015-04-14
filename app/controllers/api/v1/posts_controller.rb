@@ -1,9 +1,10 @@
 class Api::V1::PostsController < ApplicationController
   def index
-    if params[:category_id]
-      render json: Post.where(category_id: params[:category_id])
+    @posts = if params[:category_name]
+      Post.find_category(params[:category_name])
     else
-      render json: Post.all
+      Post.all
     end
+    render json: @posts.limit(250).offset(params[:offset])
   end
 end
