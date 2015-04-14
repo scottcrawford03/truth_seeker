@@ -3,5 +3,6 @@ class Post < ActiveRecord::Base
 
   validates :lat, :long, presence: true
 
-  scope :find_category, -> (name) { joins(:category).where(categories: {name: name.downcase.titleize}) }
+  scope :find_category, -> (name) { 
+    joins(:category).where(categories: { name: name.downcase.titleize }) }
 end
