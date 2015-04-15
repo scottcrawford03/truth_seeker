@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: truth_seeker_production
-  username: truth_seeker
+  username: postgres
+  password: password
   password: <%= ENV['TRUTH_SEEKER_DATABASE_PASSWORD'] %>
